@@ -13,7 +13,8 @@ export async function signUp(email, password, username) {
             options: {
                 data: {
                     username: username
-                }
+                },
+                emailRedirectTo: `${window.location.origin}/confirm-email.html`
             }
         })
 
@@ -54,6 +55,14 @@ export async function signIn(email, password) {
         })
 
         if (error) throw error
+
+        // Check if email is confirmed
+        if (data.user && !data.user.email_confirmed_at) {
+            return {
+                success: false,
+                message: 'Please confirm your email before logging in.'
+            }
+        }
 
         // Redirect to home page after successful login
         window.location.href = 'home.html'
