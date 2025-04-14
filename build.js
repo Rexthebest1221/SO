@@ -2,6 +2,7 @@ import { mkdir, copyFile, readdir } from 'fs/promises';
 import { join } from 'path';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
+import { spawn } from 'child_process';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -45,6 +46,26 @@ async function build() {
         await mkdir(join(__dirname, 'dist', 'node_modules'), { recursive: true });
 
         console.log('Build completed successfully!');
+        console.log('Starting server...');
+
+        // Start the server
+        const server = spawn('node', ['server.js'], {
+            stdio: 'inherit',
+            shell: true,
+            cwd: join(__dirname, 'dist')
+        });
+
+        // Handle server process events
+        server.on('error', (err) => {
+            console.error('Failed to start server:', err);
+            process.exit(1);
+        });
+
+        server.on('close', (code) => {
+            console.log(`Server process exited with code ${code}`);
+            process.exit(code);
+        });
+
     } catch (err) {
         console.error('Build failed:', err);
         process.exit(1);
