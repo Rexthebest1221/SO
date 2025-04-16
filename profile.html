@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Profile Settings - Schizophrenics Online</title>
+        <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    </head>
+    <body class="auth-page">
+        <div class="auth-container">
+            <div class="auth-header">
+                <h1>Profile Settings</h1>
+                <p>Customize your profile and account settings</p>
+            </div>
+
+            <div class="auth-form">
+                <form id="profile-form">
+                    <div class="profile-picture-section">
+                        <div class="profile-picture-preview">
+                            <img id="profile-picture" src="images/default-avatar.png" alt="Profile Picture">
+                            <button type="button" id="change-picture" class="secondary-button">
+                                <i class="fas fa-camera"></i> Change Picture
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="display-name">Display Name</label>
+                        <div class="input-group">
+                            <i class="fas fa-user"></i>
+                            <input type="text" id="display-name" name="display-name" placeholder="Your display name">
+                        </div>
+                        <small class="error-message" id="display-name-error"></small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="bio">Bio</label>
+                        <div class="input-group">
+                            <i class="fas fa-pen"></i>
+                            <textarea id="bio" name="bio" rows="3" placeholder="Tell us about yourself"></textarea>
+                        </div>
+                        <small class="error-message" id="bio-error"></small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="theme">Theme Preference</label>
+                        <div class="input-group">
+                            <i class="fas fa-palette"></i>
+                            <select id="theme" name="theme">
+                                <option value="light">Light</option>
+                                <option value="dark">Dark</option>
+                                <option value="system">System Default</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="notifications">Notification Settings</label>
+                        <div class="checkbox-group">
+                            <label>
+                                <input type="checkbox" id="email-notifications" name="notifications" checked>
+                                Email Notifications
+                            </label>
+                            <label>
+                                <input type="checkbox" id="push-notifications" name="notifications" checked>
+                                Push Notifications
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="auth-button">
+                            <i class="fas fa-save"></i> Save Changes
+                        </button>
+                    </div>
+                </form>
+
+                <div class="danger-zone">
+                    <h3>Danger Zone</h3>
+                    <button type="button" id="logout-button" class="danger-button">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </button>
+                    <button type="button" id="delete-account" class="danger-button">
+                        <i class="fas fa-trash"></i> Delete Account
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <script type="module" src="profile.js"></script>
+    </body>
+</html> 

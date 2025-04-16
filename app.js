@@ -1,31 +1,11 @@
-import { supabase, signOut, getCurrentUser } from './auth.js';
+import { supabase } from './supabase.js';
 
-// Check authentication
-async function checkAuth() {
-    const { data: { user }, error } = await supabase.auth.getUser();
-    if (error || !user) {
-        window.location.href = 'index.html';
-        return;
-    }
-    return user;
-}
-
-// Initialize the application
-async function initApp() {
-    const user = await checkAuth();
-    if (!user) return;
-
-    // Set user information
-    document.getElementById('username-display').textContent = user.user_metadata.username || user.email;
-
-    // Load initial data
+// Load feed when page loads
+document.addEventListener('DOMContentLoaded', async () => {
     await loadFeed();
     await loadTrendingTopics();
     await loadSuggestedGroups();
-
-    // Set up event listeners
-    setupEventListeners();
-}
+});
 
 // Load feed posts
 async function loadFeed() {
@@ -115,47 +95,4 @@ async function loadSuggestedGroups() {
             <span>${group.name}</span>
         </div>
     `).join('');
-}
-
-// Set up event listeners
-function setupEventListeners() {
-    // Logout button
-    document.getElementById('logout-btn').addEventListener('click', async () => {
-        const result = await signOut();
-        if (result.success) {
-            window.location.href = 'index.html';
-        }
-    });
-
-    // Post form
-    const postForm = document.querySelector('.post-form');
-    const postTextarea = postForm.querySelector('textarea');
-    const postButton = postForm.querySelector('.post-button');
-
-    postButton.addEventListener('click', async () => {
-        const content = postTextarea.value.trim();
-        if (!content) return;
-
-        const { data: { user } } = await supabase.auth.getUser();
-        const { error } = await supabase
-            .from('posts')
-            .insert([
-                {
-                    title: content.substring(0, 50),
-                    content: content,
-                    author_id: user.id
-                }
-            ]);
-
-        if (error) {
-            console.error('Error creating post:', error);
-            return;
-        }
-
-        postTextarea.value = '';
-        await loadFeed();
-    });
-}
-
-// Initialize the app when the page loads
-document.addEventListener('DOMContentLoaded', initApp); 
+} 

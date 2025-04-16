@@ -3,49 +3,68 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Schizophrenics Online - Sign Up</title>
+        <title>Sign Up - Schizophrenics Online</title>
         <link rel="icon" type="image/x-icon" href="images/favicon.ico">
         <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     </head>
-    <body>
-        <header>
-            <h1>Schizophrenics Online</h1>
-            <p>Create your account to join our supportive community</p>
-        </header>
-
-        <main>
-            <div class="auth-container">
-                <div class="auth-form">
-                    <h2>Create Account</h2>
-                    <form id="signup-form">
-                        <div class="form-group">
-                            <label for="username">Username:</label>
-                            <input type="text" id="username" required>
-                            <small class="error-message" id="username-error"></small>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email:</label>
-                            <input type="email" id="email" required>
-                            <small class="error-message" id="email-error"></small>
-                        </div>
-                        <div class="form-group">
-                            <label for="password">Password:</label>
-                            <input type="password" id="password" required>
-                            <small class="error-message" id="password-error"></small>
-                        </div>
-                        <div class="form-group">
-                            <label for="confirm-password">Confirm Password:</label>
-                            <input type="password" id="confirm-password" required>
-                            <small class="error-message" id="confirm-password-error"></small>
-                        </div>
-                        <button type="submit" id="signup-button">Create Account</button>
-                    </form>
-                    <div class="form-footer">
-                        <p>Already have an account? <a href="index.html">Login here</a></p>
-                    </div>
-                </div>
+    <body class="auth-page">
+        <div class="auth-container">
+            <div class="auth-header">
+                <h1>Schizophrenics Online</h1>
+                <p>Create your account to join our supportive community</p>
             </div>
-        </main>
+
+            <div class="auth-form">
+                <form id="signup-form">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <div class="input-group">
+                            <i class="fas fa-user"></i>
+                            <input type="text" id="username" name="username" required placeholder="Choose a username">
+                        </div>
+                        <small class="error-message" id="username-error"></small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <div class="input-group">
+                            <i class="fas fa-envelope"></i>
+                            <input type="email" id="email" name="email" required placeholder="Enter your email">
+                        </div>
+                        <small class="error-message" id="email-error"></small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <div class="input-group">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" id="password" name="password" required placeholder="Create a password">
+                        </div>
+                        <small class="error-message" id="password-error"></small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="confirm-password">Confirm Password</label>
+                        <div class="input-group">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" id="confirm-password" name="confirm-password" required placeholder="Confirm your password">
+                        </div>
+                        <small class="error-message" id="confirm-password-error"></small>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="auth-button">
+                            <i class="fas fa-user-plus"></i> Create Account
+                        </button>
+                    </div>
+
+                    <div class="form-footer">
+                        <p>Already have an account? <a href="login.html">Login here</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
 
         <script type="module" src="signup.js"></script>
     </body>

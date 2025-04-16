@@ -3,46 +3,91 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Schizophrenics Online - Login</title>
+        <title>Schizophrenics Online</title>
         <link rel="icon" type="image/x-icon" href="images/favicon.ico">
         <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     </head>
-    <body>
-        <header>
-            <h1>Schizophrenics Online</h1>
-            <p>Welcome to Schizophrenics Online!</p>
-        </header>
+    <body class="home-page">
+        <div class="app-container">
+            <!-- Left Sidebar -->
+            <nav class="sidebar">
+                <div class="sidebar-header">
+                    <h1>Schizophrenics Online</h1>
+                </div>
+                <ul class="sidebar-nav">
+                    <li class="active"><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="#"><i class="fas fa-users"></i> Groups</a></li>
+                    <li><a href="#"><i class="fas fa-book"></i> Articles</a></li>
+                    <li><a href="#"><i class="fas fa-user"></i> Profile</a></li>
+                </ul>
+                <div class="sidebar-footer">
+                    <button class="login-button" style="display: none;" href="login.html">
+                        <i class="fas fa-sign-in-alt"></i> Login
+                    </button>
+                    <div class="user-menu" style="display: none;">
+                        <img id="user-avatar" src="https://via.placeholder.com/40" alt="User Avatar">
+                        <span id="username-display">Username</span>
+                        <button id="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</button>
+                    </div>
+                </div>
+            </nav>
 
-        <main>
-            <div class="auth-container">
-                <!-- Login Form -->
-                <div id="login-form" class="auth-form">
-                    <h2>Login</h2>
-                    <form id="login">
-                        <div class="form-group">
-                            <label for="login-email">Email:</label>
-                            <input type="email" id="login-email" required>
+            <!-- Main Content -->
+            <main class="main-content">
+                <div class="top-bar">
+                    <div class="search-container">
+                        <div class="search-bar">
+                            <i class="fas fa-search"></i>
+                            <input type="text" placeholder="Search posts, groups, or users...">
                         </div>
-                        <div class="form-group">
-                            <label for="login-password">Password:</label>
-                            <input type="password" id="login-password" required>
-                        </div>
-                        <button type="submit">Login</button>
-                    </form>
-                    <div class="form-footer">
-                        <p>Don't have an account? <a href="signup.html">Sign up</a></p>
+                    </div>
+                    <div class="top-bar-actions">
+                        <a href="login.html" class="top-login-button">
+                            <i class="fas fa-sign-in-alt"></i> Login
+                        </a>
                     </div>
                 </div>
 
-                <!-- User Profile (hidden by default) -->
-                <div id="user-profile" class="auth-form" style="display: none;">
-                    <h2>Welcome, <span id="username-display"></span>!</h2>
-                    <button id="logout-btn">Logout</button>
-                </div>
-            </div>
-        </main>
+                <div class="content-container">
+                    <!-- Post Form (only visible when logged in) -->
+                    <div class="post-form-container">
+                        <div class="post-form">
+                            <textarea id="post-text" placeholder="Share your thoughts..."></textarea>
+                            <div class="post-form-actions">
+                                <button type="submit" class="post-button">Post</button>
+                            </div>
+                        </div>
+                    </div>
 
-        <script type="module" src="main.js"></script>
+                    <!-- Feed -->
+                    <div class="feed-container">
+                        <h2 class="feed-title">Recent Posts</h2>
+                        <div class="feed">
+                            <!-- Posts will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+            <!-- Right Sidebar -->
+            <aside class="right-sidebar">
+                <div class="sidebar-section">
+                    <h3>Trending Topics</h3>
+                    <div class="trending-topics">
+                        <!-- Trending topics will be loaded here -->
+                    </div>
+                </div>
+                <div class="sidebar-section">
+                    <h3>Suggested Groups</h3>
+                    <div class="group-list">
+                        <!-- Groups will be loaded here -->
+                    </div>
+                </div>
+            </aside>
+        </div>
+
+        <script type="module" src="app.js"></script>
     </body>
 </html>
 
